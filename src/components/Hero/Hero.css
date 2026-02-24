@@ -1,0 +1,193 @@
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding-top: 80px;
+}
+
+.hero-bg { position: absolute; inset: 0; z-index: 0; }
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.15;
+}
+.blob1 {
+  width: 500px; height: 500px;
+  background: #7C3AED;
+  top: -100px; right: -100px;
+  animation: float 8s ease-in-out infinite;
+}
+.blob2 {
+  width: 400px; height: 400px;
+  background: #A855F7;
+  bottom: -100px; left: -100px;
+  animation: float 10s ease-in-out infinite reverse;
+}
+.grid-overlay {
+  position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(124,58,237,0.04) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(124,58,237,0.04) 1px, transparent 1px);
+  background-size: 50px 50px;
+}
+
+.hero-content {
+  position: relative; z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+  width: 100%;
+}
+
+/* Text side */
+.hero-greeting {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #A78BFA;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+.hero-greeting .dot {
+  width: 8px; height: 8px;
+  background: #22c55e;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+.hero-name {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 0.8rem;
+}
+.hero-name span {
+  background: var(--gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-role {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #CBD5E1;
+  margin-bottom: 1.2rem;
+  font-family: 'Fira Code', monospace;
+  min-height: 2rem;
+}
+.typed { color: #A78BFA; }
+.cursor {
+  color: #7C3AED;
+  animation: pulse 1s infinite;
+  margin-left: 2px;
+}
+
+.hero-desc {
+  color: #94A3B8;
+  font-size: 1rem;
+  line-height: 1.8;
+  margin-bottom: 2rem;
+  max-width: 500px;
+}
+.hero-desc strong { color: #A78BFA; }
+
+.hero-actions { display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; }
+
+.hero-socials { display: flex; gap: 1.5rem; }
+.hero-socials a {
+  color: #64748B;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.2s;
+  position: relative;
+}
+.hero-socials a::after {
+  content: '';
+  position: absolute;
+  bottom: -2px; left: 0; right: 0;
+  height: 1px;
+  background: #A78BFA;
+  transform: scaleX(0);
+  transition: transform 0.2s;
+}
+.hero-socials a:hover { color: #A78BFA; }
+.hero-socials a:hover::after { transform: scaleX(1); }
+
+/* Code card */
+.hero-visual { display: flex; flex-direction: column; gap: 1.5rem; }
+
+.code-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  overflow: hidden;
+  animation: float 6s ease-in-out infinite;
+}
+.code-header {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.8rem 1rem;
+  background: rgba(255,255,255,0.03);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.code-header .dot { width: 10px; height: 10px; border-radius: 50%; }
+.dot.red { background: #ef4444; }
+.dot.yellow { background: #f59e0b; }
+.dot.green { background: #22c55e; }
+.code-file { margin-left: auto; color: #64748b; font-size: 0.8rem; font-family: 'Fira Code', monospace; }
+.code-body {
+  padding: 1.2rem 1.5rem;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.82rem;
+  line-height: 1.8;
+  color: #A78BFA;
+  white-space: pre;
+}
+
+.hero-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+.stat {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+  transition: all 0.3s;
+}
+.stat:hover { border-color: rgba(124,58,237,0.4); background: rgba(124,58,237,0.08); }
+.stat-num { display: block; font-size: 1.8rem; font-weight: 800; color: #A78BFA; }
+.stat-label { font-size: 0.8rem; color: #64748b; }
+
+/* Scroll indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  z-index: 1;
+}
+.scroll-dot {
+  width: 4px; height: 40px;
+  background: linear-gradient(to bottom, #7C3AED, transparent);
+  border-radius: 2px;
+  animation: float 2s ease-in-out infinite;
+}
+
+@media (max-width: 768px) {
+  .hero-content { grid-template-columns: 1fr; gap: 2rem; }
+  .hero-name { font-size: 2rem; }
+  .hero-visual { display: none; }
+}
